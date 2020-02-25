@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"  href="/css/bootstrap.min.css">
+    <link rel="stylesheet"  href="/css/main.css">
+    <title>Zoo</title>
+</head>
+<body>
+    <div class="container" >
+        <a id="logout" class="button" href="/logout">Logout</a>
+        <div class="row" th:object="${zoo}">
+            <div class="col-md-6 text-center">
+                <figure>
+                    <figcaption id="zooName" class="font-weight-bold" th:text="*{zooName}"></figcaption>
+                    <img class="img-fluid" th:src="@{'data:image/jpg;base64,' + ${T(org.springframework.util.Base64Utils).encodeToString(zoo.getZooImage())}}"
+                        alt="image">
+                </figure>
+            </div>
+            <div class="col-md-6 pt-5">
+                <textarea id="zooDescription" rows="10" cols="60" th:text="*{zooDescription}" readonly></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <h1 class="col-md-12 text-center p-2"> Animals in this zoo</h1>
+            <div class="col-md-3 p-2" th:each="animal : ${zoo.getAnimals()}">
+                <figure>
+                    <figcaption class="font-weight-bold" th:text="${animal.animalName}"></figcaption>
+                    <a th:href="@{'/animal/' + ${animal.getAnimalName()}}">
+                        <img class="img-fluid"
+                             th:src="@{'data:image/jpg;base64,' + ${T(org.springframework.util.Base64Utils).encodeToString(animal.getAnimalImage())}}"
+                             alt="image">
+                    </a>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

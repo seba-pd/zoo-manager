@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"  href="/css/bootstrap.min.css">
+    <link rel="stylesheet"  href="/css/main.css">
+    <title>Setting the animal to the zoo</title>
+</head>
+    <body>
+        <div class="container">
+            <a id="back" class="button" href="/admin">Back</a>
+            <h1 class="text-center font-weight-bold">Set animal to the zoo</h1>
+            <div class="row justify-content-center">
+                <form th:action="@{/admin/set-animal-to-zoo}" method="post">
+                    <div class="form-group">
+                        <label for="zoo">Zoo: </label>
+                        <select class="form-control" id="zoo" name="zoo">
+                            <option  th:each="zoo : ${zoos} "
+                                     th:text="${zoo.getZooName()}"
+                                     th:value="${zoo.id}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="animal">Animal: </label>
+                        <select class="form-control" id="animal" name="animal">
+                            <option th:each="animal : ${animals}"
+                                    th:text="${animal.getAnimalName()}"
+                                    th:value="${animal.id}">
+                            </option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-dark btn-sm">
+                    <input type="reset" class="btn btn-dark btn-sm">
+                </form>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="/js/bootstrap.min.js"></script>
+    </body>
+</html>

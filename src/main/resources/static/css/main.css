@@ -1,0 +1,46 @@
+
+body
+{
+    background:aliceblue;
+}
+
+figcaption
+{
+    text-align: center;
+    font-weight: bold;
+    color:#1b1e21;
+
+}
+
+.zoo
+{
+    margin-bottom: auto;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+}
+
+#zooName
+{
+    font-size: 33px;
+}
+
+#animalName
+{
+    font-size: 33px;
+}
+
+#logout
+{
+    float: right;
+    padding: 12px;
+    margin: 15px;
+}
+#back
+{
+    float: right;
+    padding: 12px;
+    margin: 15px;
+}
+
+
